@@ -30,13 +30,13 @@ TrendingTweetsAPI is REST API that publishes the most popular Hashtags to the pu
 
 1. Run TweetSampleWorer first
 
-Assuming you've already set up your own Twetter project and application, you'll need to provide Twitter Bearer Toekn in appsettings.json before you can run the worker service
+Assuming you've already set up your own Twetter project and application, you'll need to provide Twitter Bearer Token in appsettings.json before you can run the worker service.
 
   "TweetSamplerConfiguration": {
     "TwitterBearToken": "**REPLACE THIS**"
   }
 
-Run the worker service for at least a few minutes. You'll see Data\TrendingHashTags.json updated with the lastest top hashtags
+Run the worker service for at least a few minutes. You'll see Data\TrendingHashTags.json periodically updated with the lastest top hashtags.
 
 2. Run TrendingTweetsAPI locally from Visual Studio (eventually on Cloud). 
 
