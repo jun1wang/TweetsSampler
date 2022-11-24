@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "TweetSampleWorker": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "DOTNET_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}
