@@ -12,7 +12,11 @@ public class SampleStreamProcessor
 {
     public SampleStreamProcessor(string token, int numTopHashTags = 10)
     {
-        Token = token ?? throw new ArgumentNullException("Beare token cannot be null");
+        if (string.IsNullOrEmpty(token))
+        {
+            throw new ArgumentNullException("Beare token cannot be empty!");
+        }
+        Token = token; 
         NumTopHashTags = numTopHashTags;
     }
 

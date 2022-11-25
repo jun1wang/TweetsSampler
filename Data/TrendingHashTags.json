@@ -1,1 +1,118 @@
-{"$id":"1","Attachments":{"$id":"2","MediaKeys":null,"PollIds":null},"AuthorId":"15827727","ContextAnnotations":[{"$id":"3","Domain":{"$id":"4","Description":"Named people in the world like Nelson Mandela","Id":"10","Name":"Person"},"Entity":{"$id":"5","Description":"American actor","Id":"1070725799668408321","Name":"John Fugelsang"}},{"$id":"6","Domain":{"$id":"7","Description":"An actor or actress in the world, like Kate Winslet or Leonardo DiCaprio","Id":"56","Name":"Actor"},"Entity":{"$id":"8","Description":"American actor","Id":"1070725799668408321","Name":"John Fugelsang"}},{"$id":"9","Domain":{"$id":"10","Description":"A taxonomy of user interests. ","Id":"131","Name":"Unified Twitter Taxonomy"},"Entity":{"$id":"11","Description":"American actor","Id":"1070725799668408321","Name":"John Fugelsang"}}],"ConversationId":"1595277886625284101","CreatedAt":"2022-11-23T04:47:41+00:00","Entities":{"$id":"12","Annotations":[{"$id":"13","End":115,"NormalizedText":"JFKassassination","Probability":0.366,"Start":100,"Type":"Person"}],"Cashtags":null,"Hashtags":[{"$id":"14","Start":99,"End":116,"Tag":"JFKassassination"}],"Mentions":[{"$id":"15","End":17,"Start":3,"Username":"JohnFugelsang"}],"Urls":null},"Geo":{"$id":"16","Coordinates":null,"PlaceId":null},"Id":"1595277886625284101","InReplyToUserId":null,"Lang":"en","PossiblySensitive":false,"ReferencedTweets":[{"$id":"17","Id":"1595089073554735105","Type":"retweeted"}],"Source":"Twitter for Android","Text":"RT @JohnFugelsang: Today marks 59 years of ppl accepting that 1 bullet caused 7 wounds on 2 men. \n\n#JFKassassination","Withheld":null,"NonPublicMetrics":null,"OrganicMetrics":null,"PromotedMetrics":null,"PublicMetrics":{"$id":"18","LikeCount":0,"QuoteCount":0,"ReplyCount":0,"RetweetCount":315}}
+{
+    "$id": "1",
+    "Attachments": {
+        "$id": "2",
+        "MediaKeys": null,
+        "PollIds": null
+    },
+    "AuthorId": "15827727",
+    "ContextAnnotations": [
+        {
+            "$id": "3",
+            "Domain": {
+                "$id": "4",
+                "Description": "Named people in the world like Nelson Mandela",
+                "Id": "10",
+                "Name": "Person"
+            },
+            "Entity": {
+                "$id": "5",
+                "Description": "American actor",
+                "Id": "1070725799668408321",
+                "Name": "John Fugelsang"
+            }
+        },
+        {
+            "$id": "6",
+            "Domain": {
+                "$id": "7",
+                "Description": "An actor or actress in the world, like Kate Winslet or Leonardo DiCaprio",
+                "Id": "56",
+                "Name": "Actor"
+            },
+            "Entity": {
+                "$id": "8",
+                "Description": "American actor",
+                "Id": "1070725799668408321",
+                "Name": "John Fugelsang"
+            }
+        },
+        {
+            "$id": "9",
+            "Domain": {
+                "$id": "10",
+                "Description": "A taxonomy of user interests. ",
+                "Id": "131",
+                "Name": "Unified Twitter Taxonomy"
+            },
+            "Entity": {
+                "$id": "11",
+                "Description": "American actor",
+                "Id": "1070725799668408321",
+                "Name": "John Fugelsang"
+            }
+        }
+    ],
+    "ConversationId": "1595277886625284101",
+    "CreatedAt": "2022-11-23T04:47:41+00:00",
+    "Entities": {
+        "$id": "12",
+        "Annotations": [
+            {
+                "$id": "13",
+                "End": 115,
+                "NormalizedText": "JFKassassination",
+                "Probability": 0.366,
+                "Start": 100,
+                "Type": "Person"
+            }
+        ],
+        "Cashtags": null,
+        "Hashtags": [
+            {
+                "$id": "14",
+                "Start": 99,
+                "End": 116,
+                "Tag": "JFKassassination"
+            }
+        ],
+        "Mentions": [
+            {
+                "$id": "15",
+                "End": 17,
+                "Start": 3,
+                "Username": "JohnFugelsang"
+            }
+        ],
+        "Urls": null
+    },
+    "Geo": {
+        "$id": "16",
+        "Coordinates": null,
+        "PlaceId": null
+    },
+    "Id": "1595277886625284101",
+    "InReplyToUserId": null,
+    "Lang": "en",
+    "PossiblySensitive": false,
+    "ReferencedTweets": [
+        {
+            "$id": "17",
+            "Id": "1595089073554735105",
+            "Type": "retweeted"
+        }
+    ],
+    "Source": "Twitter for Android",
+    "Text": "RT @JohnFugelsang: Today marks 59 years of ppl accepting that 1 bullet caused 7 wounds on 2 men. \n\n#JFKassassination",
+    "Withheld": null,
+    "NonPublicMetrics": null,
+    "OrganicMetrics": null,
+    "PromotedMetrics": null,
+    "PublicMetrics": {
+        "$id": "18",
+        "LikeCount": 0,
+        "QuoteCount": 0,
+        "ReplyCount": 0,
+        "RetweetCount": 315
+    }
+}

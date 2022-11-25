@@ -15,6 +15,6 @@
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TweetProcessor\TweetSampler.Core.csproj" />
+    <ProjectReference Include="..\TweetSampler.Core\TweetSampler.Core.csproj" />
   </ItemGroup>
 </Project>

@@ -21,6 +21,6 @@
     <PackageReference Include="NLog" Version="5.0.5" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TweetSampleModel\TweetSampler.Model.csproj" />
+    <ProjectReference Include="..\TweetSampler.Model\TweetSampler.Model.csproj" />
   </ItemGroup>
 </Project>

@@ -9,7 +9,7 @@
 
   <PropertyGroup Condition=" '$(RunConfiguration)' == 'http' " />
   <ItemGroup>
-    <ProjectReference Include="..\TweetSampleModel\TweetSampler.Model.csproj">
+    <ProjectReference Include="..\TweetSampler.Model\TweetSampler.Model.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
   </ItemGroup>
