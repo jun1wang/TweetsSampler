@@ -5,10 +5,11 @@ using Tweetinvi.Models;
 using Tweetinvi.Models.V2;
 using System.Text.Json.Serialization;
 using TweetSampler.Model;
+using Tweetinvi.Events.V2;
 
 namespace TweetSampler.Core;
 
-public class SampleStreamProcessor
+public class SampleStreamProcessor : ISampleStreamProcessor
 {
     public SampleStreamProcessor(string token, int numTopHashTags = 10)
     {
@@ -16,7 +17,7 @@ public class SampleStreamProcessor
         {
             throw new ArgumentNullException("Beare token cannot be empty!");
         }
-        Token = token; 
+        Token = token;
         NumTopHashTags = numTopHashTags;
     }
 
@@ -31,14 +32,7 @@ public class SampleStreamProcessor
             var sampleStreamV2 = client.StreamsV2.CreateSampleStream();
             sampleStreamV2.TweetReceived += (sender, args) =>
             {
-                DetectHashTags(args.Tweet);
-
-                if (TotalTweets % 100 == 0)
-                {
-                    var topHashTags = GetTrendingHashTags();
-                    DisplayTrendingHashTags(topHashTags);
-                    SaveTrendingHashTags(topHashTags);
-                }
+                ProcessSampleTweet(args);
             };
 
             await sampleStreamV2.StartAsync();
@@ -50,13 +44,28 @@ public class SampleStreamProcessor
         }
     }
 
+    private void ProcessSampleTweet(TweetV2ReceivedEventArgs args)
+    {
+        DetectHashTags(args.Tweet);
+
+        if (TotalTweets % 100 == 0)
+        {
+            var topHashTags = GetTrendingHashTags();
+
+            var reporter = new SampleStreamSummaryReport();
+            reporter.DisplayTrendingHashTags(topHashTags, TotalTweets);
+
+            var saver = new SampleStreamSaver();
+            saver.SaveToFileAsJson(topHashTags);
+        }
+    }
 
     private void DetectHashTags(TweetV2 tweet)
     {
         ++TotalTweets;
 
         if (SampleTweet.HasNoHashTags(tweet))
-            return;
+            return; // ignore (no hashtag)
 
         foreach (var t in tweet.Entities.Hashtags)
         {
@@ -86,46 +95,11 @@ public class SampleStreamProcessor
         return topHashTags;
     }
 
-    private void SaveTrendingHashTags(IEnumerable<KeyValuePair<string, int>> sortedKVPairs)
-    {
-        string fileName = "../Data/TrendingHashTags.json";
-        var trendingHashTags = new TrendingHashTags();
-
-        int rank = 0;
-        foreach (var p in sortedKVPairs)
-        {
-            var hc = new HashTag {
-                Rank = ++rank,
-                Tag = p.Key,
-                Tweets = p.Value
-            };
-            trendingHashTags.TopTags?.Add(hc);
-        }
-
-        trendingHashTags.SampleSize = TotalTweets;
-
-        var options = new JsonSerializerOptions { IncludeFields = true };
-        string jsonString = JsonSerializer.Serialize(trendingHashTags, options);
-        File.WriteAllText(fileName, jsonString);
-    }
-
-    private void DisplayTrendingHashTags(IEnumerable<KeyValuePair<string, int>> trendingHashTags)
-    {
-        System.Console.WriteLine($"\n==============================================================================\n");
-        System.Console.WriteLine($"Total sampled tweets: {TotalTweets}\n");
-        System.Console.WriteLine($"Top 10 Hashtags:\n");
-        int i = 0;
-        foreach (var p in trendingHashTags)
-        {
-            System.Console.WriteLine(string.Format("  {0, 3}: #{1, -50} {2, 8} tweets.", ++i, p.Key?.Trim(), p.Value));
-        }
-    }
-
     #region Fileds
 
     public string? Token { get; set; }
     private int NumTopHashTags { get; set; }
-    private int TotalTweets  { get; set; }
+    private int TotalTweets { get; set; }
 
     private SortedDictionary<string, int> HashTagCounts = new SortedDictionary<string, int>();
     private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
