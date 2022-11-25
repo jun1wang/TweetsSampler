@@ -11,19 +11,6 @@ TweetSampler is a tiny .NET Core application that
 
 ### TweetSampler.Worker 
 
-# TweetsSampler
-
-## Introduction
-
-TweetSampler is a tiny .NET Core application that
-
-1) Consumes Twitter V2 Sample Stream API, which provides approximately 1% of the full tweet stream. 
-2) Provides trending hashtags in real time.
-
-## Components
-
-### TweetSampler.Worker 
-
 TweetSampler.Worker is a worker service that does nothing but hosting the processor which does all the hard work.
 
 ### TweetSampler.Core
