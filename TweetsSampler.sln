@@ -18,9 +18,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C7212E2E-0
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{B3EB121C-248C-4835-8E3E-C170C7072146}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Core.Tests", "TweetSampler.Core.Tests\TweetSampler.Core.Tests.csproj", "{B9D1F076-46FF-4EC6-86B3-803C71CAD138}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Core.Tests", "Tests\TweetSampler.Core.Tests\TweetSampler.Core.Tests.csproj", "{B9D1F076-46FF-4EC6-86B3-803C71CAD138}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Model.Tests", "TweetSampler.Core.Tests\TweetSampler.Model.Tests\TweetSampler.Model.Tests.csproj", "{11209537-D8A8-4B24-8DBF-134182BCA2BD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Model.Tests", "Tests\TweetSampler.Model.Tests\TweetSampler.Model.Tests.csproj", "{11209537-D8A8-4B24-8DBF-134182BCA2BD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

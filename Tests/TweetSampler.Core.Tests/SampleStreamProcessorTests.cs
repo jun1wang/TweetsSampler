@@ -6,7 +6,7 @@ public class SampleStreamProcessorTests
 {
 
     [Fact]
-    public void ThrowsExceptioWhenBearTokenIsEmpty ()
+    public void ThrowsExceptioWhenBearTokenIsEmpty()
     {
         var processor = new SampleStreamProcessor("");
         Assert.Throws<ArgumentNullException>(() => processor.Token);
