@@ -1,18 +1,13 @@
 ﻿using System.Text.Json;
 using Microsoft.AspNetCore.Mvc;
-using TweetSampleModel;
+using TweetSampler.Model;
 
-namespace TrendingTweetsAPI.Controllers;
+namespace TweetSampler.API.Controllers;
 
 [ApiController]
 [Route("[controller]")]
 public class TrendingHashTagsController : ControllerBase
 {
-    private static readonly string[] Summaries = new[]
-    {
-        "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
-    };
-
     private readonly ILogger<TrendingHashTagsController> _logger;
 
     public TrendingHashTagsController(ILogger<TrendingHashTagsController> logger)
@@ -23,7 +18,6 @@ public class TrendingHashTagsController : ControllerBase
     [HttpGet]
     public IEnumerable<HashTag> Get()
     {
-
         string fileName = "../Data/TrendingHashTags.json";
         string jsonString = System.IO.File.ReadAllText(fileName);
         var options = new JsonSerializerOptions { IncludeFields = true };

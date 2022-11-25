@@ -1,5 +1,6 @@
 ﻿using System.Collections;
-namespace TweetSampleModel;
+
+namespace TweetSampler.Model;
 
 public class TrendingHashTags   
 {

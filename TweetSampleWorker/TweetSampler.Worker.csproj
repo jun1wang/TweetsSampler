@@ -5,12 +5,16 @@
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
     <UserSecretsId>dotnet-TweetSampleWorker-e9022a47-e6cf-4eec-9e71-06575aede111</UserSecretsId>
+    <AssemblyName>TweetSampleWorker</AssemblyName>
   </PropertyGroup>
 
+  <PropertyGroup Condition=" '$(RunConfiguration)' == 'TweetSampleWorker' ">
+    <ExternalConsole>true</ExternalConsole>
+  </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Microsoft.Extensions.Hosting" Version="7.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\TweetProcessor\TweetSampleProcessor.csproj" />
+    <ProjectReference Include="..\TweetProcessor\TweetSampler.Core.csproj" />
   </ItemGroup>
 </Project>
