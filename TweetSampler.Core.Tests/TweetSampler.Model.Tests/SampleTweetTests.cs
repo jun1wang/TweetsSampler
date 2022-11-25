@@ -13,7 +13,7 @@ public class SampleTweetTests
     }
 
     [Fact]
-    public void TweetHasHashTags()
+    public void ValidTweetHasHashTags()
     {
         TweetV2 tweet = new TweetV2();
         tweet.Entities = new TweetEntitiesV2();

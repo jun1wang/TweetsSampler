@@ -22,6 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\TweetProcessor\TweetSampler.Core.csproj" />
+    <ProjectReference Include="..\TweetSampler.Core\TweetSampler.Core.csproj" />
   </ItemGroup>
 </Project>

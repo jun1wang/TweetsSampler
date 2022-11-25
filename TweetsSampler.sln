@@ -1,15 +1,15 @@
-﻿
+
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 25.0.1704.0
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Core", "TweetProcessor\TweetSampler.Core.csproj", "{33AF34EF-4BBB-4C15-9BD5-F292701C487A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Core", "TweetSampler.Core\TweetSampler.Core.csproj", "{33AF34EF-4BBB-4C15-9BD5-F292701C487A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Worker", "TweetSampleWorker\TweetSampler.Worker.csproj", "{331A1C0A-40B9-4BC1-B309-DBB5D2CEA88A}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Worker", "TweetSampler.Worker\TweetSampler.Worker.csproj", "{331A1C0A-40B9-4BC1-B309-DBB5D2CEA88A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Model", "TweetSampleModel\TweetSampler.Model.csproj", "{40A22875-7B10-4AAC-9971-862650208AFD}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.Model", "TweetSampler.Model\TweetSampler.Model.csproj", "{40A22875-7B10-4AAC-9971-862650208AFD}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.API", "TrendingTweetsAPI\TweetSampler.API.csproj", "{F96DD78E-8F6F-4DA2-AEAB-38B1C72396FA}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TweetSampler.API", "TweetSampler.API\TweetSampler.API.csproj", "{F96DD78E-8F6F-4DA2-AEAB-38B1C72396FA}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{C7212E2E-0C5D-4117-91CF-94BFD7583147}"
 	ProjectSection(SolutionItems) = preProject
