@@ -1,5 +1,5 @@
 ﻿using System;
-namespace TweetSampleWorker
+namespace TweetSampler.Worker
 {
 	public class TweetSamplerConfiguration
     {

@@ -1,8 +1,9 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Options;
-using TweetProcessor;
+using Tweetinvi.Exceptions;
+using TweetSampler.Core;
 
-namespace TweetSampleWorker;
+namespace TweetSampler.Worker;
 
 public class Worker : BackgroundService
 {
@@ -21,10 +22,26 @@ public class Worker : BackgroundService
         while (!stoppingToken.IsCancellationRequested)
         {
             _logger.LogInformation("Worker running at: {time}", DateTimeOffset.Now);
+            try
+            {
+                var bearerToken = _options.Value.TwitterBearToken!;
 
-            var processor = new Processor(_options.Value.TwitterBearToken);
+                var processor = new SampleStreamProcessor(bearerToken);
 
-            await processor.Run();
+                await processor.Run();
+            }
+            catch (TwitterInvalidCredentialsException e)
+            {
+                _logger.LogError($"Twitter credentials provided is invalid: {e.ToString()}");
+            }
+            catch (TwitterException e)
+            {
+                _logger.LogError($"Twitter internal error: {e.ToString()}");
+            }
+            catch (Exception e)
+            {
+                _logger.LogError($"Twitter internal error: {e.ToString()}");
+            }
         }
     }
 }

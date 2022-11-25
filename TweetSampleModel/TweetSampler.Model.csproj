@@ -1,0 +1,18 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net7.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+    <AssemblyName>TweetSampleModel</AssemblyName>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="TweetinviAPI" />
+    <None Remove="NLog" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="TweetinviAPI" Version="5.0.4" />
+    <PackageReference Include="NLog" Version="5.0.5" />
+  </ItemGroup>
+</Project>
