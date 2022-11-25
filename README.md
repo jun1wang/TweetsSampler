@@ -9,26 +9,26 @@ TweetSampler is a tiny .NET Core application that
 
 ## Components
 
-### TweetSampleWorker 
+### TweetSampler.Worker 
 
-TweetSampleWorker is a worker service that does nothing but hosting the processor which does all the hard work.
+TweetSampler.Worker is a worker service that does nothing but hosting the processor which does all the hard work.
 
-### TweetProcessor
+### TweetSampler.Core
 
-TweetProcessor is a class library that calls Tweetinvi to access Twitter STREAM APIs. It receives Sample Tweet Stream and finds out the Top 10 most popular Hashtags. It also persist the results for the pourpose
+TweetSampler.Core is a class library that calls Tweetinvi to access Twitter STREAM APIs. It receives Sample Tweet Stream and finds out the Top 10 most popular Hashtags. It also persist the results for the pourpose
 of sharing to the public.
 
-### TweetSampleModel
+### TweetSampler.Model
 
-TweetSampleModel is also a class library that contains common models shared betwen TweetProcessor and TrendingTweetsAPI.
+TweetSampler.Model is also a class library that contains common models shared betwen TweetSampler.Core and TweetSampler.API.
 
-### TrendingTweetsAPI
+### TweetSampler.API
 
-TrendingTweetsAPI is REST API that publishes the most popular Hashtags to the public.
+TweetSampler.API is REST API that publishes the most popular Hashtags to the public.
 
 ## Usage
 
-1. Run TweetSampleWorer first
+### 1. Run TweetSampler.Worker first
 
 Assuming you've already set up your own Twetter project and application, you'll need to provide Twitter Bearer Token in appsettings.json before you can run the worker service.
 
@@ -38,12 +38,8 @@ Assuming you've already set up your own Twetter project and application, you'll 
 
 Run the worker service for at least a few minutes. You'll see Data\TrendingHashTags.json periodically updated with the lastest top hashtags.
 
-2. Run TrendingTweetsAPI locally from Visual Studio (eventually on Cloud). 
+### 2. Run TweetSampler.API locally from Visual Studio (eventually on Cloud). 
 
-3. Check results via Postman with URL below 
+### 3. Check results via Postman with URL below 
 
-http://localhost:5145/TrendingHashTags
-
-
-
-  
+       http://localhost:5145/TrendingHashTags
