@@ -9,9 +9,9 @@ using Tweetinvi.Events.V2;
 
 namespace TweetSampler.Core;
 
-public class SampleStreamProcessor : ISampleStreamProcessor
+public abstract class SampleStreamProcessorBase
 {
-    public SampleStreamProcessor(string token, int numTopHashTags = 10)
+    public SampleStreamProcessorBase(string token, int numTopHashTags = 10)
     {
         if (string.IsNullOrEmpty(token))
         {
@@ -19,17 +19,25 @@ public class SampleStreamProcessor : ISampleStreamProcessor
         }
         Token = token;
         NumTopHashTags = numTopHashTags;
+        CreateTwitterClient();
+    }
+
+    private void CreateTwitterClient()
+    {
+        var credentials = new TwitterCredentials
+        {
+            BearerToken = Token
+        };
+
+        Client = new TwitterClient(credentials); 
     }
 
     public async Task Run()
     {
         try
         {
-            var credentials = new TwitterCredentials();
-            credentials.BearerToken = Token;
-            var client = new TwitterClient(credentials);
+            var sampleStreamV2 = Client?.StreamsV2.CreateSampleStream()!;
 
-            var sampleStreamV2 = client.StreamsV2.CreateSampleStream();
             sampleStreamV2.TweetReceived += (sender, args) =>
             {
                 ProcessSampleTweet(args);
@@ -39,12 +47,11 @@ public class SampleStreamProcessor : ISampleStreamProcessor
         }
         catch (HttpRequestException e)
         {
-            _logger.Error("\nException Caught!");
-            _logger.Error("Message :{0} ", e.Message);
+            _logger.Error("\nException Caught! :{0} ", e.Message);
         }
     }
 
-    private void ProcessSampleTweet(TweetV2ReceivedEventArgs args)
+    protected void ProcessSampleTweet(TweetV2ReceivedEventArgs args)
     {
         DetectHashTags(args.Tweet);
 
@@ -64,8 +71,8 @@ public class SampleStreamProcessor : ISampleStreamProcessor
     {
         ++TotalTweets;
 
-        if (SampleTweet.HasNoHashTags(tweet))
-            return; // ignore (no hashtag)
+        if (Ignorable(tweet))
+            return;
 
         foreach (var t in tweet.Entities.Hashtags)
         {
@@ -94,15 +101,21 @@ public class SampleStreamProcessor : ISampleStreamProcessor
 
         return topHashTags;
     }
+    
+
+    protected abstract bool Ignorable(TweetV2 tweet);
+
 
     #region Fileds
 
-    public string? Token { get; set; }
-    private int NumTopHashTags { get; set; }
-    private int TotalTweets { get; set; }
+    protected TwitterClient? Client { get; set; }
+    protected int NumTopHashTags { get; set; }
+    protected int TotalTweets { get; set; }
 
-    private SortedDictionary<string, int> HashTagCounts = new SortedDictionary<string, int>();
-    private static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+    protected SortedDictionary<string, int> HashTagCounts = new SortedDictionary<string, int>();
+    protected static readonly NLog.Logger _logger = NLog.LogManager.GetCurrentClassLogger();
+
+    private string? Token { get; set; }
     private readonly Uri StreamV2Uri = new Uri("https://api.twitter.com/2/tweets/sample/stream?tweet.fields=created_at&expansions=author_id&user.fields=created_at");
 
     #endregion

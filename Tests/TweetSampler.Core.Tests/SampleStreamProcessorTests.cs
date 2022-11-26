@@ -8,7 +8,7 @@ public class SampleStreamProcessorTests
     [Fact]
     public void ThrowsExceptioWhenBearTokenIsEmpty()
     {
-        var processor = new SampleStreamProcessor("");
-        Assert.Throws<ArgumentNullException>(() => processor.Token);
+        var processor = new SampleStreamProcessorDefault("");
+        Assert.Throws<ArgumentNullException>(() => processor);
     }
 }
