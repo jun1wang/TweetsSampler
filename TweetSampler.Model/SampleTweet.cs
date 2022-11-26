@@ -9,7 +9,12 @@ public static class SampleTweet
 {
     public static bool HasNoHashTags(this TweetV2 tweet)
     {
-        return (tweet.Entities == null || tweet.Entities.Hashtags == null);
+        return (tweet == null || tweet.Entities == null || tweet.Entities.Hashtags == null);
+    }
+
+    public static bool InEnglish(this TweetV2 tweet)
+    {
+        return (tweet == null || tweet.Lang == Languge.English);
     }
 
     public static void Log(this TweetV2 tweet, NLog.Logger logger)
