@@ -53,7 +53,9 @@ public abstract class SampleStreamProcessorBase
 
     protected void ProcessSampleTweet(TweetV2ReceivedEventArgs args)
     {
-        DetectHashTags(args.Tweet);
+        var tagDetected = DetectHashTags(args.Tweet) ;
+
+        if (!tagDetected) return;
 
         if (TotalTweets % 100 == 0)
         {
@@ -67,12 +69,12 @@ public abstract class SampleStreamProcessorBase
         }
     }
 
-    private void DetectHashTags(TweetV2 tweet)
+    private bool DetectHashTags(TweetV2 tweet)
     {
         ++TotalTweets;
 
         if (Ignorable(tweet))
-            return;
+            return false;
 
         foreach (var t in tweet.Entities.Hashtags)
         {
@@ -89,6 +91,8 @@ public abstract class SampleStreamProcessorBase
         }
 
         SampleTweet.Log(tweet, _logger);
+
+        return true;
     }
 
     private IEnumerable<KeyValuePair<string, int>> GetTrendingHashTags()
