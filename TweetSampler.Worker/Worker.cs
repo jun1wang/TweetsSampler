@@ -25,9 +25,13 @@ public class Worker : BackgroundService
             try
             {
                 var bearerToken = _options.Value.TwitterBearToken!;
+                var language = _options.Value.Langage!;
 
-                //var processor = new SampleStreamProcessorDefault(bearerToken);
-                var processor = new SampleStreamProcessorWithFilter(bearerToken, "English");
+                SampleStreamProcessorBase processor;
+
+                processor = (language == "English") ?
+                        new SampleStreamProcessorWithFilter(bearerToken, language) :
+                        new SampleStreamProcessorDefault(bearerToken);
 
                 await processor.Run();
             }

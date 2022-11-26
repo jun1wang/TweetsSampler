@@ -20,7 +20,7 @@ public class SampleStreamProcessorWithFilter : SampleStreamProcessorBase
 
     protected override bool Ignorable(TweetV2 tweet)
     {
-        return (SampleTweet.HasNoHashTags(tweet) || (Language == "English" && SampleTweet.InEnglish(tweet) == false));
+        return (SampleTweet.HasNoHashTags(tweet) || (Language == "English" && SampleTweet.TagInEnglish(tweet) == false));
     }
 
     #region Fileds
